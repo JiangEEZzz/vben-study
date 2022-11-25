@@ -4,11 +4,11 @@ import { LoginParams, LoginResultModel, GetUserInfoModel } from './model/userMod
 import { ErrorMessageMode } from '/#/axios';
 
 enum Api {
-  Login = '/login',
-  Logout = '/logout',
-  GetUserInfo = '/getUserInfo',
-  GetPermCode = '/getPermCode',
-  TestRetry = '/testRetry',
+  Login = '/api/user/login',
+  Logout = '/api/user/logout',
+  GetUserInfo = '/api/user/getUserInfo',
+  GetPermCode = '/api/user/getPermCode',
+  GetUserMenuList = '/api/user/getMenuList',
 }
 
 /**
@@ -40,16 +40,4 @@ export function getPermCode() {
 export function doLogout() {
   return defHttp.get({ url: Api.Logout });
 }
-
-export function testRetry() {
-  return defHttp.get(
-    { url: Api.TestRetry },
-    {
-      retryRequest: {
-        isOpenRetry: true,
-        count: 5,
-        waitTime: 1000,
-      },
-    },
-  );
-}
+export const getUserMenuList = () => defHttp.get({ url: Api.GetUserMenuList });
