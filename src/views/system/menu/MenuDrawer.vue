@@ -17,6 +17,7 @@
   import { BasicDrawer, useDrawerInner } from '/@/components/Drawer';
 
   import { getMenuList } from '/@/api/sys/menu';
+  import { getPermissionList } from '/@/api/sys/permission';
 
   export default defineComponent({
     name: 'MenuDrawer',
@@ -38,14 +39,19 @@
         isUpdate.value = !!data?.isUpdate;
 
         if (unref(isUpdate)) {
-          setFieldsValue({
+          await setFieldsValue({
             ...data.record,
           });
         }
         const treeData = await getMenuList();
-        updateSchema({
+        const menuPermission = await getPermissionList();
+        await updateSchema({
           field: 'parentMenu',
           componentProps: { treeData },
+        });
+        await updateSchema({
+          field: 'menuPermission',
+          componentProps: { menuPermission },
         });
       });
 

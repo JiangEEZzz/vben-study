@@ -20,8 +20,8 @@ export const columns: BasicColumn[] = [
     },
   },
   {
-    title: '权限标识',
-    dataIndex: 'permission',
+    title: '权限名称',
+    dataIndex: 'permissionName',
     width: 180,
   },
   {
@@ -141,10 +141,18 @@ export const formSchema: FormSchema[] = [
     ifShow: ({ values }) => isMenu(values.type),
   },
   {
-    field: 'permission',
-    label: '权限标识',
-    component: 'Input',
+    field: 'permissionID',
+    label: '菜单权限',
+    component: 'TreeSelect',
     ifShow: ({ values }) => !isDir(values.type),
+    componentProps: {
+      fieldNames: {
+        label: 'permissionName',
+        key: 'id',
+        value: 'id',
+      },
+      getPopupContainer: () => document.body,
+    },
   },
   {
     field: 'status',

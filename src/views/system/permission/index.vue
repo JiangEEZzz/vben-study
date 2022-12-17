@@ -39,6 +39,7 @@
   import PermissionDrawer from './permissionDrawer.vue';
 
   import { columns, searchFormSchema } from './permission.data';
+  import {getPermissionList} from "/@/api/sys/permission";
 
   export default defineComponent({
     name: 'PermissionManagement',
@@ -47,7 +48,7 @@
       const [registerDrawer, { openDrawer }] = useDrawer();
       const [registerTable, { reload, expandAll }] = useTable({
         title: '权限列表',
-        api: getMenuList,
+        api: getPermissionList,
         columns,
         formConfig: {
           labelWidth: 120,

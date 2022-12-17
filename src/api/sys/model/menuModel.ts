@@ -3,6 +3,7 @@ export interface RouteItem {
   path: string;
   component: any;
   meta: RouteMeta;
+  parentMenu: number;
   name?: string;
   alias?: string | string[];
   redirect?: string;

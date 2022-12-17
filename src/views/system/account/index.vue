@@ -82,7 +82,6 @@
           // slots: { customRender: 'action' },
         },
       });
-
       function handleCreate() {
         openModal(true, {
           isUpdate: false,

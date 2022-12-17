@@ -16,7 +16,7 @@
   import { formSchema } from './permission.data';
   import { BasicDrawer, useDrawerInner } from '/@/components/Drawer';
   import { getMenuList } from '/@/api/sys/menu';
-  import {createPermission} from "/@/api/sys/permission";
+  import {createPermission, getPermissionList} from "/@/api/sys/permission";
   export default defineComponent({
     name: 'PermissionDrawer',
     components: { BasicDrawer, BasicForm },
@@ -41,9 +41,9 @@
             ...data.record,
           });
         }
-        const treeData = await getMenuList();
+        const treeData = await getPermissionList();
         await updateSchema({
-          field: 'parentMenu',
+          field: 'parentPermission',
           componentProps: { treeData },
         });
       });
